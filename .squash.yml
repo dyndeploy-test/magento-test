@@ -6,7 +6,7 @@ deployments:
       true
     auto_deploy_ttl:
       1h
-    auto_deploy_post_launch_commands:
-      Install:
-        web:
-          - install-magento
+    post_launch:
+      - target: web
+        command: exec
+        options: "install-magento"

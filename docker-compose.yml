@@ -1,5 +1,4 @@
 version: '3.0'
-# v 1.1.1
 services:
   web:
     image: alexcheng/magento2
@@ -10,24 +9,45 @@ services:
     environment:
       - MAGENTO_LANGUAGE=en_GB
       - MAGENTO_DEFAULT_CURRENCY=USD
-      - MAGENTO_URL=$SQUASH_DOMAIN
+      - MAGENTO_URL=http://$SQUASH_DOMAIN
       - MAGENTO_BACKEND_FRONTNAME=admin
-      - MAGENTO_USE_SECURE=0
-      - MAGENTO_BASE_URL_SECURE=0
+      - MAGENTO_USE_SECURE=1
+      - MAGENTO_BASE_URL_SECURE=https://$SQUASH_DOMAIN
       - MAGENTO_USE_SECURE_ADMIN=0
 
       - MAGENTO_ADMIN_FIRSTNAME=Admin
       - MAGENTO_ADMIN_LASTNAME=MyStore
       - MAGENTO_ADMIN_EMAIL=amdin@example.com
       - MAGENTO_ADMIN_USERNAME=admin
-      - MAGENTO_ADMIN_PASSWORD=magento
+      - MAGENTO_ADMIN_PASSWORD=magento123
+      
+      - MYSQL_HOST=db
+      - MYSQL_ROOT_PASSWORD=myrootpassword
+      - MYSQL_USER=magento
+      - MYSQL_PASSWORD=magento
+      - MYSQL_DATABASE=magento
     volumes:
       - /dev/mytheme:/var/www/html/app/design/frontend/mytheme/default
+    command: sh -c "install-magento"
   db:
     image: mysql:5.6.23
     volumes:
       - db-data:/var/lib/mysql/data
     environment:
+      - MAGENTO_LANGUAGE=en_GB
+      - MAGENTO_DEFAULT_CURRENCY=USD
+      - MAGENTO_URL=http://$SQUASH_DOMAIN
+      - MAGENTO_BACKEND_FRONTNAME=admin
+      - MAGENTO_USE_SECURE=1
+      - MAGENTO_BASE_URL_SECURE=https://$SQUASH_DOMAIN
+      - MAGENTO_USE_SECURE_ADMIN=0
+
+      - MAGENTO_ADMIN_FIRSTNAME=Admin
+      - MAGENTO_ADMIN_LASTNAME=MyStore
+      - MAGENTO_ADMIN_EMAIL=amdin@example.com
+      - MAGENTO_ADMIN_USERNAME=admin
+      - MAGENTO_ADMIN_PASSWORD=magento123
+      
       - MYSQL_HOST=db
       - MYSQL_ROOT_PASSWORD=myrootpassword
       - MYSQL_USER=magento

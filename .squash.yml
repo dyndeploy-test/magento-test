@@ -4,8 +4,6 @@ deployments:
       ./docker-compose.yml
     auto_deploy_on_commits:
       true
-    wait_post_launch:
-      true
     post_launch:
       - target: web
         command: exec

@@ -6,7 +6,3 @@ deployments:
       true
     auto_deploy_ttl:
       1h
-    post_launch:
-      - target: web
-        command: exec
-        options: "{target} 'sleep 10;install-magento'"

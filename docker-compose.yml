@@ -62,3 +62,4 @@ services:
       - db
 volumes:
   db-data:
+

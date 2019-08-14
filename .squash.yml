@@ -9,4 +9,4 @@ deployments:
     post_launch:
       - target: web
         command: exec
-        options: "install-magento"
+        options: "{target} 'sleep 10;install-magento'"

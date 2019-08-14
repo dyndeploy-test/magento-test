@@ -28,7 +28,6 @@ services:
       - MYSQL_DATABASE=magento
     volumes:
       - /dev/mytheme:/var/www/html/app/design/frontend/mytheme/default
-    command: sh -c "echo 'Sleep';sleep 10;install-magento;apache2 -D FOREGROUND"
     depends_on: 
       - db
   db:

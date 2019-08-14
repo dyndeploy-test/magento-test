@@ -4,5 +4,9 @@ deployments:
       ./docker-compose.yml
     auto_deploy_on_commits:
       true
-    auto_deploy_ttl:
-      1h
+    wait_post_launch:
+      true
+    post_launch:
+      - target: web
+        command: exec
+        options: "{target} sh -c 'install-magento'"

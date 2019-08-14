@@ -4,9 +4,6 @@ services:
     image: alexcheng/magento2
     ports:
       - "80:80"
-    build:
-      context: .
-      dockerfile: Dockerfile
     links:
       - db
     environment:
